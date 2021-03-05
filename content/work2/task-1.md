@@ -93,6 +93,12 @@ weight = 1
 
 1. If prompted, select “Yes” to replace objects if they exist in the target and “Collect and Continue” if prompted about statistics.
 
-1. From the right-hand pane, expand the **TICKITDWH** schema and you should see your tables and views have been created in your Redshift Database.
+1. From the right-hand pane, expand the **TICKITDWH** schema and you should see your tables and views converted to your Redshift Database format.
+
+1. Right-click on the tickitdwh schema and select **Apply to Database**
+
+	<img src="../images/sct-apply-db.png" alt="drawing" width="300"/>
+
+	If prompted, select “Yes” to create the objects in the Redshift Database. 
 
 You have now successfully converted your Oracle Data Warehouse schema to Redshift—in the next lab, we are going to migrate the actual data from your Oracle data warehouse to Redshift.

@@ -28,7 +28,7 @@ weight = 1
 
 	<img src="../images/redshift-connect-to-database.png" alt="drawing" width="500"/>
 
-1. You will run the below query, but before you run it you need to update the IAM role ARN with the actual AWS account number (ACCOUNT_NUMBER), you will find it in the console upper right corner, it's a 12 digits number. Remove hyphens '-'.
+1. Copy and paste the below script in the Amazon Redshift query editor text box. Before you need to update the IAM role ARN with the actual AWS account number (ACCOUNT_NUMBER), you will find it in the console upper right corner, it's a 12 digits number. Remove hyphens '-'.
 
 	<img src="../images/aws-account-number.png" alt="drawing" width="500"/>
 
@@ -41,7 +41,7 @@ weight = 1
 	create external database if not exists;
 	```
 
-1. Paste the the updated script in the Amazon Redshift query editor text box and run the query.
+1. Run query.
 
 	<img src="../images/redshift-run-query.png" alt="drawing" width="700"/>
 

@@ -16,7 +16,7 @@ weight = 2
 
 1. For the VPC, select the **VPC-Lab-Datawarehouse** and uncheck **Public accessible**
 
-	<img src="../images/dms-instance-vpc.png" alt="drawing" width="4500"/>
+	<img src="../images/dms-instance-vpc.png" alt="drawing" width="500"/>
 
 1. Click **Create**
 
