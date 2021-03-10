@@ -4,33 +4,69 @@ chapter = false
 weight = 1 
 +++
 
-1. From the console, navigate to the **Amazon Redshift** service. Service *search box* > Redshift
+1. To do this lab activities, you will need to access a Windows server where SQL Workbench/J is pre-installed, to grant access to the Windows server yuo'll need some parameters which are found in CloudFormation, please navigate to the CloudFormation Service (Service *search box* -> CloudFormation)
 
-	<img src="../images/service-redshift.png" alt="drawing" width="600"/>
+1. Click on the CloudFormation stack listed
 
-1. We need to create a new database connection, click on the **EDITOR** icon, then click on **Query editor**
+	<img src="../images/cf-1.png" alt="drawing" width="600"/>
 
-	<img src="../images/click-on-editor.png" alt="drawing" width="100"/>
+1. Click on the **Outputs** panel
 
-1. In this lab, we will use the previous Redshift query editor version, so please click on **old query editor** from the blue banner at the top of the page.
+	<img src="../images/cf-2.png" alt="drawing" width="600"/>
 
-	<img src="../images/old-query-editor.png" alt="drawing" width="800"/>
-	
-1. In the **Connect to database** dialog box, update fields with this parameters:
+1. Copy and paste the output values from the following parameters in a notepad, you will use those parameters later in this lab and in lab #2:
+
+	| Description |
+	|---|
+	| AWS account number  |
+	| Oracle DW private IP  |
+	| Amazon Redshift endpoint  |
+	| Windows host public IP  |
+
+1. Also you will need the Redshift JDBC URL, please navigate to the Redshift console (Service *search box* -> Redshift)
+
+1. Click on your Redshift cluster
+
+	<img src="../images/click-on-cluster.png" alt="drawing" width="300"/>
+
+	<img src="../images/click-on-cluster-2.png" alt="drawing" width="300"/>
+
+1. Copy and paste in a notepad the JDBC URL of your Redshift cluster
+
+	<img src="../images/copy-jdbc-url.png" alt="drawing" width="900"/>
+
+
+1. Use the below credentials to log in to the Windows instance using any RDP client installed in your computer
 
 	| Key | Value  |
 	|---|---|
-	| Database name  | psobigdata  |
-	|  Database user | awsuser  |
-	|  Database password | PsoBigData01  |
+	| Host IP  | [*Windows host public IP*]  |
+	|  User | Administrator  |
+	|  Password | PsoBda2020$Win  |
 
-1. Click **Connect to database**
+1. Once logged in, click **Yes**, to allow the windows intance to be network discovered
 
-	<img src="../images/redshift-connect-to-database.png" alt="drawing" width="500"/>
+	<img src="../images/win-network.png" alt="drawing" width="300"/>
 
-1. Copy and paste the below script in the Amazon Redshift query editor text box. Before you need to update the IAM role ARN with the actual AWS account number (ACCOUNT_NUMBER), you will find it in the console upper right corner, it's a 12 digits number. Remove hyphens '-'.
+1. Start SQL Workbench/J
 
-	<img src="../images/aws-account-number.png" alt="drawing" width="500"/>
+	<img src="../images/benchmark-access.png" alt="drawing" width="450"/>
+
+1. You will be prompted to start a new database connection. Make sure the **Redshift-pso-bda-lab** connection is selected. Fill the information to create the connection to Redshift
+
+	| Key | Value  |
+	|---|---|
+	| URL  | [*Redshift JDBC URL*]  |
+	|  Username | awsuser  |
+	|  Password | PsoBigData01  |
+
+	<img src="../images/52_39_219_61.png" alt="drawing" width="900"/>
+
+1. Click **OK**
+
+1. Now that you have started a database connection to your Redshift cluster you can start running queries, copy and paste the below script in the SQL Workbench/J query editor text box. Before runnning the query, update the IAM role ARN with the actual AWS account number (ACCOUNT_NUMBER) you have recorded in step 4.
+
+	**IMPORTANT**: Do not open a new *Statement* tab, run all queries in the *Statement 1* tab
 
 	```
 	create external schema tickithistory
@@ -43,26 +79,31 @@ weight = 1
 
 1. Run query.
 
-	<img src="../images/redshift-run-query.png" alt="drawing" width="700"/>
+	<img src="../images/run-query-1.png" alt="drawing" width="900"/>
 
+	You must see a similar output:
 
-1. To make sure the external schema has been created, run the following query in the same Query window:
+	<img src="../images/query1-output.png" alt="drawing" width="500"/>
+
+1. To make sure the external schema has been created, run the following query in the same *Statement 1* query window:
 
 	```
 	select * from svv_external_schemas
 	```
 
-	You must see a similar output in the below **Rows returned** panel
+	You must see a similar output in the below results panel
 
-	<img src="../images/redshift-new-schema.png" alt="drawing" width="600"/>
+	<img src="../images/query2-output.png" alt="drawing" width="1000"/>
 
-1. To make sure that your external tables are available for querying, run the following query:
+1. To make sure that your external tables are available for querying, run the following query in the same *Statement 1* query window:
 
 	```
 	select * from svv_external_tables
 	```
 
-	Below **Rows returned** you must see a list of tables
+	In the below panel you must see a list of tables
+
+	<img src="../images/query3-output.png" alt="drawing" width="400"/>
 	
 1. Now that you have confirmed that your external tables are accessible, you can run queries from Redshift to Athena databases. 
 

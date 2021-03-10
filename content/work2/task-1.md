@@ -4,29 +4,15 @@ chapter = false
 weight = 1 
 +++
 
-1. To do this lab, you will need the Private IP of an Oracle DW deployed in this lab environment, that you will use as the source database to perform a migration to Amazon Redshift, and the public IP of a Windows host which has preinstalled the Schema Convertion Tool (SCT). To obtain these IPs, navigate to the CloudFormation Service (Service *search box* -> CloudFormation)
+1. To do this lab, you will need the Private IP of an Oracle DW deployed in this lab environment, that you will use as the source database to perform a migration to Amazon Redshift, and the public IP of a Windows host which has preinstalled the Schema Convertion Tool (SCT). These IP's were obtained in Lab #1.
 
-1. Click on the CloudFormation stack listed
-
-	<img src="../images/cf-1.png" alt="drawing" width="600"/>
-
-1. Click on the **Outputs** panel
-
-	<img src="../images/cf-2.png" alt="drawing" width="600"/>
-
-1. Copy and paste the *Oracle DW private IP*, *Windows host public IP* and the *Amazon Redshift endpoint* in a notepad on your computer, you will use them later in this lab and in Lab #3.
-
-1. The *Schema Conversion Tool (SCT)* is preinstalled in the Windows host. Use the below credentials to log in to the instance using any RDP client installed in your computer
+1. The *Schema Conversion Tool (SCT)* is preinstalled in the same Windows host where you ran queries using SQL Workbench/J. Use the below credentials to log in to the instance using any RDP client installed in your computer
 
 	| Key | Value  |
 	|---|---|
-	| Host IP  | [Windows host public IP]  |
+	| Host IP  | [*Windows host public IP*]  |
 	|  User | Administrator  |
 	|  Password | PsoBda2020$Win  |
-
-1. Once logged in, click **Yes**, to allow the windows intance to be network discovered
-
-	<img src="../images/win-network.png" alt="drawing" width="300"/>
 
 1. Open the AWS Schema Conversion Tool (SCT), it will take ~1 minute to launch
 
@@ -61,7 +47,7 @@ weight = 1
 
 	| Key | Value  |
 	|---|---|
-	| Server name  | [Oracle DW private IP]  |
+	| Server name  | [*Oracle DW private IP*]  |
 	|  Server port | 1521  |
 	|  Oracle SID | xe |
 	|  User name | TICKITDWH  |
@@ -77,7 +63,7 @@ weight = 1
 
 	| Key | Value  |
 	|---|---|
-	| Server name  | [Amazon Redshift endpoint]  |
+	| Server name  | [*Amazon Redshift endpoint*]  |
 	|  Server port | 5439 |
 	|  Database | psobigdata |
 	|  User name | awsuser |
