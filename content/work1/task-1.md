@@ -4,7 +4,7 @@ chapter = false
 weight = 1 
 +++
 
-1. To do this lab activities, you will need to access a Windows server where SQL Workbench/J is pre-installed, to grant access to the Windows server yuo'll need some parameters which are found in CloudFormation, please navigate to the CloudFormation Service (Service *search box* -> CloudFormation)
+1. To do this lab activities, you will need to access a Windows server where SQL Workbench/J is pre-installed, to grant access to the Windows server you will need some parameters which are found in CloudFormation, please navigate to the CloudFormation Service (Service *search box* -> CloudFormation)
 
 1. Click on the CloudFormation stack listed
 
@@ -25,9 +25,7 @@ weight = 1
 
 1. Also you will need the Redshift JDBC URL, please navigate to the Redshift console (Service *search box* -> Redshift)
 
-1. Click on your Redshift cluster
-
-	<img src="../images/click-on-cluster.png" alt="drawing" width="300"/>
+1. From the left menu, click on **Clusters**, then click on your Redshift cluster
 
 	<img src="../images/click-on-cluster-2.png" alt="drawing" width="300"/>
 
@@ -36,7 +34,7 @@ weight = 1
 	<img src="../images/copy-jdbc-url.png" alt="drawing" width="900"/>
 
 
-1. Use the below credentials to log in to the Windows instance using any RDP client installed in your computer
+1. Now you will RDP to a Windows server where SQL Workbench/J is preinstalled so you can execute SQL scripts. Use the below credentials to log in to the Windows instance using any RDP client installed in your computer
 
 	| Key | Value  |
 	|---|---|
@@ -66,7 +64,9 @@ weight = 1
 
 1. Now that you have started a database connection to your Redshift cluster you can start running queries, copy and paste the below script in the SQL Workbench/J query editor text box. Before runnning the query, update the IAM role ARN with the actual AWS account number (ACCOUNT_NUMBER) you have recorded in step 4.
 
-	**IMPORTANT**: Do not open a new *Statement* tab, run all queries in the *Statement 1* tab
+	{{% notice info %}}
+**IMPORTANT**: Do not open a new *Statement* tab, run all queries in the *Statement 1* tab
+{{% /notice %}}
 
 	```
 	create external schema tickithistory
